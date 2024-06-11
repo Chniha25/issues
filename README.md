@@ -1,4 +1,3 @@
-# issues
-devops issues
+# DevOps issues
 
 404 not found error
