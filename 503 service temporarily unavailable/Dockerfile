@@ -1,0 +1,30 @@
+# Use the official .NET image as a build stage
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the .csproj file and restore any dependencies
+COPY *.csproj ./
+RUN dotnet restore
+
+# Copy the remaining application code
+COPY . ./
+
+# Build the application
+RUN dotnet publish -c Release -o out
+
+# Use the official .NET runtime image for the final stage
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the build output from the previous stage
+COPY --from=build /app/out .
+
+# Expose the port the app runs on
+EXPOSE 80
+
+# Set the entry point for the container
+ENTRYPOINT ["dotnet", "YourApp.dll"]
