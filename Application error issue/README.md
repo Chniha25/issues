@@ -61,7 +61,5 @@ ng serve --port 4201
   
 ```
 
-i see port number in  projects/itop/e2e/protractor.conf.js
-
 
 
