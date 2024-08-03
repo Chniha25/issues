@@ -52,9 +52,16 @@ Fix: Check if your application is correctly set up to listen on port 8080 and th
 
 
 
+Note :
 
+By default, Angular applications run on port 4200. To serve the application on a different port, use the --port flag:
 
+```bash
+ng serve --port 4201
+  
+```
 
+i see port number in  projects/itop/e2e/protractor.conf.js
 
 
 
